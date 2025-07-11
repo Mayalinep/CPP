@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.class.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maya <maya@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mpelage <mpelage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:49:27 by maya              #+#    #+#             */
-/*   Updated: 2025/07/09 23:00:23 by maya             ###   ########.fr       */
+/*   Updated: 2025/07/11 20:13:04 by mpelage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 
 class Weapon{
     private:
-        cst std::string Type ;
+        std::string Type ;
 
 
     public:
     Weapon();
     Weapon(std::string Type);
-    std::string getType();
+    const std::string& getType();
     void setType(std::string Type);
+	~Weapon();
 };
 
 

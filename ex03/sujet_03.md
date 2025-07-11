@@ -6,7 +6,7 @@ hpp}, HumanA.cpp, HumanB.{h, hpp}, HumanB.cpp
 
 Implement a Weapon class that has:
 •A private attribute type, which is a string.
-•A getType() member function that returns a constant reference to type.
+•A getType() member function that returns a constant reference to typeweapon.
 •A setType() member function that sets type using the new value passed as a pa-
 rameter.
 Now, create two classes: HumanA and HumanB. They both have a Weapon and
