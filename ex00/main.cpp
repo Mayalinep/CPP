@@ -1,22 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maya <maya@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 22:52:15 by maya              #+#    #+#             */
-/*   Updated: 2025/07/09 13:19:13 by maya             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "Zombie.class.hpp"
+#include "Zombie.hpp"
+#include "display.hpp"
 
 int main()
 {
-    randomChump("Bob");
-    Zombie* zombie = newZombie("audrey");
-    zombie->announce();
-    delete zombie;
+	//Script
+	std::cout << std::endl;
+	typingEffect("***** You look at the horizon, and see a horde of zombies approaching... *****\n", 10000);
+	usleep(1000);
+	typingEffect("You see a zombie named Bob...\n", 10000);
+	usleep(1000);
+	typingEffect("You take your weapon and prepare to fight...\n", 10000);
+
+
+	//Create a zombie on the stack
+	randomChump("Bob");
+
+	//Script
+	std::cout << std::endl;
+	typingEffect("You see a another zombie named Audrey...\n", 10000);
+	usleep(1000);
+
+	//Create a zombie on the heap
+   	Zombie* zombie = newZombie("Audrey");
+    zombie->announce(); 
+	delete zombie;
+	std::cout << std::endl;
     return (0);
 }

@@ -1,21 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mpelage <mpelage@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 19:58:42 by mpelage           #+#    #+#             */
-/*   Updated: 2025/07/11 21:23:03 by mpelage          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "Weapon.class.hpp"
+#include "Weapon.hpp"
 
 
-Weapon::Weapon(std::string Type){
-	this->Type = Type;
-	std::cout << "Weapon constructor called" << std::endl;
+Weapon::Weapon(std::string type) : type(type){
+	std::cout << std::endl;
+	std::cout << NIGHT_BLUE << " * A magical " << RESET << type << NIGHT_BLUE << " appeared in the inventory *" << RESET << std::endl;
+	std::cout << std::endl;
 }
 
 Weapon::Weapon(){
@@ -23,11 +12,15 @@ Weapon::Weapon(){
 }
 
 const std::string& Weapon::getType(){
-	return (this->Type);
+	return (this->type);
 }
 
-void Weapon::setType(std::string Type){
-	this->Type = Type;
+void Weapon::setType(std::string type){
+	std::cout << std::endl;
+	std::cout << MOON_CYAN << " WIIINX !! The Power of the fairies !" << RESET << std::endl;
+	std::cout << MOON_CYAN << " * The magical " << RESET << this->type << MOON_CYAN << " is now a " << RESET << type << NIGHT_BLUE << " *" << RESET << std::endl;
+	std::cout << std::endl;
+	this->type = type;
 }
 
 Weapon::~Weapon(){

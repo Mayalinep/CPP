@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.class.hpp                                   :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpelage <mpelage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 21:58:21 by maya              #+#    #+#             */
-/*   Updated: 2025/07/11 21:07:41 by mpelage          ###   ########.fr       */
+/*   Created: 2025/07/09 13:36:31 by maya              #+#    #+#             */
+/*   Updated: 2025/07/22 20:58:52 by mpelage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_CLASS_HPP
-# define HUMANB_CLASS_HPP
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
+#include <string>
+#include <iostream>
 
-#include "Weapon.class.hpp"
-
-
-class HumanB{
+class Zombie{
     private:
-    std::string name;
-    Weapon* weapon;
+        std::string name;
 
     public:
-    HumanB(std::string name);
-    void attack();
-	void setWeapon(Weapon& weapon);
-	~HumanB();
+        Zombie();                    // Constructeur par défaut
+        Zombie(std::string name);    // Constructeur avec nom
+        void setName(std::string name);
+        void announce();
+        ~Zombie();
+
 };
+
+
+
+Zombie* zombieHorde( int N, std::string name );
+
 
 #endif

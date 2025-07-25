@@ -1,12 +1,11 @@
-
-# colors
+# Colors
 RESET = \033[0m
 GREEN = \033[32m
 RED = \033[31m
 GREY = \033[90m
 
 # Name
-NAME = Not_a_Looser
+NAME = harlFilter
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -14,20 +13,18 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCDIR = .
 OBJDIR = obj
 
-SOURCES = main.cpp Replace.cpp
-
+SOURCES = main.cpp Harl.cpp Display.cpp
 OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 
-HEADERS = Replace.hpp
+HEADERS = Harl.hpp Display.hpp
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@echo "$(GREEN)Program compiled!$(RESET)"
-	@echo "$(GREEN) I am  $(NAME)$(RESET)"
 	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
 
-$(OBJDIR)/%.o: %.cpp $(HEADERS) | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS) | $(OBJDIR)
 	@echo "$(GREY)Compiling $<...$(RESET)"
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
@@ -41,8 +38,7 @@ clean:
 fclean: clean
 	@echo "$(RED)Program completly erased!$(RESET)"
 	@rm -f $(NAME)
-	@rm -f *.replace
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 

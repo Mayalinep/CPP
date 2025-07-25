@@ -1,24 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maya <maya@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 12:51:00 by maya              #+#    #+#             */
-/*   Updated: 2025/07/09 12:52:20 by maya             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "Zombie.hpp"
 
-#include "Zombie.class.hpp"
-
-Zombie::Zombie(std::string name){
-    this->name = name;
+//constructor
+Zombie::Zombie(std::string name) : name(name) {
+	
 }
+
+//method
 void Zombie::announce()
 {
  std::cout << name <<" : BraiiiiiiinnnzzzZ..."<< std::endl;
 }
+//destructor
 Zombie::~Zombie(){
-    std::cout << name << " détruit!" << std::endl;
+    std::cout << name << " has been defeated... But the war continues..." << std::endl;
 }

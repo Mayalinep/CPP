@@ -1,42 +1,53 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maya <maya@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/09 14:16:00 by maya              #+#    #+#              #
-#    Updated: 2025/07/09 20:29:45 by maya             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# ZOMBIE APOCALYPSE MAKEFILE
 
+# Colors / Emojis 
+GREEN = \033[32m
+RED = \033[31m
+GREY = \033[90m
+RESET = \033[0m
+ZOMBIE = 🧟
+SKULL = 💀
+COFFIN = ⚰️
+
+# Name
 NAME = zombie_horde
 
+# Compiler & Flags
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCDIR = .
+# Directories
+SRCDIR = ./
 OBJDIR = obj
 
-SOURCES = main.cpp Zombie.cpp zombieHorde.cpp
+# Files
+SRCS = main.cpp Zombie.cpp zombieHorde.cpp display.cpp
 
-OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
+OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-$(NAME): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJECTS)
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@mkdir -p $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	@echo "$(GREEN)$(ZOMBIE) Building the zombie apocalypse...$(RESET)"
+	@$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	@echo "$(GREEN)$(ZOMBIE) The zombies are ready!$(RESET)"
+
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(OBJDIR)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "$(GREY)Compiling $<...$(RESET)"
+
+
 clean:
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
+	@rm -f *.o
+	@echo "$(RED)$(SKULL) Zombies cleaned up!$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
-
+	@rm -f $(NAME)
+	@echo "$(RED)$(COFFIN) Apocalypse erased!$(RESET)"
 re: fclean all
 
 .PHONY: all clean fclean re

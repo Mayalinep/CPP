@@ -10,6 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
+# colors
+RESET = \033[0m
+GREEN = \033[32m
+RED = \033[31m
+GREY = \033[90m
+
+# Name
 NAME = violence
 
 CXX = c++
@@ -22,24 +29,29 @@ SOURCES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 
-HEADERS = Weapon.class.hpp HumanA.class.hpp HumanB.class.hpp
+HEADERS = Weapon.hpp HumanA.hpp HumanB.hpp
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
+	@echo "$(GREEN)Program compiled!$(RESET)"
+	@echo "$(GREEN)Make way for $(NAME)$(RESET)"
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(HEADERS) | $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "$(GREY)Compiling $<...$(RESET)"
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 clean:
-	rm -rf $(OBJDIR)
+	@echo "$(RED)Program erased!$(RESET)"
+	@rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "$(RED)Program completly erased!$(RESET)"
+	@rm -f $(NAME)
 
 re: fclean all
 

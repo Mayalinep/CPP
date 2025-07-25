@@ -6,13 +6,13 @@
 /*   By: mpelage <mpelage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 20:15:30 by mpelage           #+#    #+#             */
-/*   Updated: 2025/07/11 21:08:34 by mpelage          ###   ########.fr       */
+/*   Updated: 2025/07/23 17:06:37 by mpelage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.class.hpp"
-#include "HumanB.class.hpp"
-#include "Weapon.class.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
 
 

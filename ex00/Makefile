@@ -1,52 +1,45 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maya <maya@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/09 12:55:00 by maya              #+#    #+#              #
-#    Updated: 2025/07/09 12:56:09 by maya             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# 🧟‍♂️ ZOMBIE APOCALYPSE MAKEFILE
 
-# Nom de l'exécutable
-NAME = zombie
+# === Colors & Emojis ===
+GREEN = \033[32m
+RED = \033[31m
+GREY = \033[90m
+RESET = \033[0m
+ZOMBIE = 🧟
+SKULL = 💀
+COFFIN = ⚰️
 
-# Compilateur et flags
+# === Compiler & Flags ===
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Fichiers sources
-SRCS = main.cpp \
-       Zombie.cpp \
-       newZombie.cpp \
-       randomChump.cpp
+# === Files ===
+NAME = zombie
+SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp display.cpp
+OBJS = $(SRCS:%.cpp=obj/%.o)
 
-# Fichiers objets (remplace .cpp par .o)
-OBJS = $(SRCS:.cpp=.o)
-
-# Règle par défaut
+# === Rules ===
 all: $(NAME)
 
-# Création de l'exécutable
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	@echo "$(GREEN)$(ZOMBIE) Building the zombie apocalypse...$(RESET)"
+	@$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
+	@echo "$(GREEN)$(ZOMBIE) The zombies are ready!$(RESET)"
 
-# Compilation des fichiers .cpp en .o
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+obj/%.o: %.cpp
+	@mkdir -p obj
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "$(GREY)Compiling $<...$(RESET)"
 
-# Nettoyage des fichiers objets
 clean:
-	rm -f $(OBJS)
+	@rm -rf obj
+	@rm -f *.o
+	@echo "$(RED)$(SKULL) Zombies cleaned up!$(RESET)"
 
-# Nettoyage complet
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(RED)$(COFFIN) Apocalypse erased!$(RESET)"
 
-# Recompilation complète
 re: fclean all
 
-# Indique que ces règles ne créent pas de fichiers
 .PHONY: all clean fclean re 

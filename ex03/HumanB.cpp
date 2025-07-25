@@ -1,32 +1,22 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mpelage <mpelage@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 20:17:48 by mpelage           #+#    #+#             */
-/*   Updated: 2025/07/11 21:08:51 by mpelage          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "HumanB.class.hpp"
+#include "HumanB.hpp"
 
 
-HumanB::HumanB(std::string name){
-	this->name = name;
-	this->weapon = NULL;
+HumanB::HumanB(std::string name) : name(name), weapon(NULL){
+	std::cout << SILVER << name << RESET << NIGHT_BLUE << " has terrified, he has no weapon " << RESET << std::endl;
+	std::cout << std::endl;
 }
 
 void HumanB::setWeapon(Weapon& weapon){
+	std::cout << NIGHT_BLUE << " * open his inventory and grab a new weapon *" << RESET << std::endl;
 	this->weapon = &weapon;
+	std::cout << std::endl;
 }
 
 void HumanB::attack(){
 	if (this->weapon)
-		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+		std::cout << DEEP_VIOLET << this->name << " attacks with their " << this->weapon->getType() << RESET << std::endl;
 	else
-		std::cout << this->name << " has no weapon!" << std::endl;
+		std::cout << NIGHT_BLUE << this->name << " has no weapon!" << RESET << std::endl;
 }
 
 HumanB::~HumanB(){
